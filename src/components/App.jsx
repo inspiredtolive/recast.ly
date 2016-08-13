@@ -2,6 +2,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      allVideos: window.exampleVideoData,
       currentVideo: window.exampleVideoData[0],
     };
   }
@@ -28,7 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav searchInput={this.fetchVideos.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
