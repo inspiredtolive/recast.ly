@@ -1,7 +1,7 @@
 var VideoListEntry = (props) => {
   var onVideoClick = function () {
-    props.state.currentVideo = props.video;
-    console.log(props.state.currentVideo);
+    // props.ref(props.video);
+    props.videoClick(props.video);
   };
   return (
     <div className="video-list-entry">

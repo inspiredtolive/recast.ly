@@ -3,6 +3,7 @@ var VideoPlayer = (props) => {
   var title = 'Video Title';
   var desc = 'Video Description';
   if (props.video !== undefined) {
+    console.log(props);
     src = `https://www.youtube.com/embed/${props.video.id.videoId}`;
     title = props.video.snippet.title;
     desc = props.video.snippet.description;

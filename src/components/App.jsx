@@ -7,19 +7,22 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    var cb = (data) => {
-      this.setState({'allVideos': data,
-            'currentVideo': data[0]});
-    };
-
-    this.props.searchYouTube({ key: window.YOUTUBE_API_KEY, query: 'cats', max: 5 }, cb);
-    
+    this.fetchVideos('cats');
   }
 
-  onVideoClick(event, video) {
-    console.log('heard', this.state.currentVideo, video);
-    this.forceUpdate();
+  fetchVideos(query) {
+    var cb = (data) => {
+      this.setState({
+        'allVideos': data,
+        'currentVideo': data[0]}
+      );
+    };
+    this.props.searchYouTube({ key: window.YOUTUBE_API_KEY, query: query, max: 5 }, cb);
+  }
 
+  onVideoClick( video) {
+    console.log('APP heard', video);
+    this.setState({'currentVideo': video});
   }
 
   render() {
@@ -29,8 +32,8 @@ class App extends React.Component {
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
-        <div className="col-md-5" onClick={this.onVideoClick.bind(this)}>
-          <VideoList videos={this.state.allVideos} state={this.state}/>
+        <div className="col-md-5" >
+          <VideoList videos={this.state.allVideos} videoClick= {this.onVideoClick.bind(this)}/>
         </div>
       </div>
     );
