@@ -3,12 +3,13 @@ var VideoPlayer = (props) => {
   var title = 'Video Title';
   var desc = 'Video Description';
   if (props.video !== undefined) {
+    console.log('video id', props);
     src = `https://www.youtube.com/embed/${props.video.id.videoId}`;
     title = props.video.snippet.title;
     desc = props.video.snippet.description;
   }
   return (
-    <div className="video-player">
+    <div className="video-player" id='video-player'>
       <div className="embed-responsive embed-responsive-16by9">
         <iframe className="embed-responsive-item" src={src + '?autoplay=1'} allowFullScreen></iframe>
       </div>

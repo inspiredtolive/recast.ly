@@ -2,11 +2,13 @@ var VideoList = (props) => {
   // if (props.videos === undefined) {
   //   return (<div className="video-list media"></div>);
   // }
+  
+  
 
   return (
     <div className="video-list media">
       {props.videos && props.videos.map(video =>
-        <VideoListEntry video = {video} />
+        <VideoListEntry video = {video} state={props.state}/>
       )}
     </div>
   );
